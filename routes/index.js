@@ -3,9 +3,12 @@ const router = express.Router();
 const con = require('../db_connection')
 
 
-//Get all flowers
 router.get('/', (req, res, next) =>{
-  //res.render('index', { title: 'Express' });
+  res.status(200).json({title: "NodeJS Microservice"});
+});
+
+//Get all flowers
+router.get('/all', (req, res, next) =>{
   con.query("SELECT * from flowers",  (err, result) =>{
     if (err) throw err;
     res.status(200).json(result);
